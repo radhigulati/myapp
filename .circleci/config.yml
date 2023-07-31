@@ -1,29 +1,21 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
-# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
-# See: https://circleci.com/docs/orb-intro/
 orbs:
   node: circleci/node@4.7
 
 jobs:
-  build_and_test: # this can be any name you choose
-    executor: node/default # use the default executor defined within the orb
+  build-and-test:
+    docker:
+      - image: cimg/node:16.10
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm test
           name: Run tests
-      - run:
-          command: node app.js
-          name: Build app
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+          command: npm test
+
 workflows:
-  test_my_app:
+  sample:
     jobs:
-      - build_and_test
+      - build-and-test

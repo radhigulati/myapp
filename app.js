@@ -6,9 +6,6 @@ var app = express()
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
-app.get('/', function (req, res) {
-    res.send('new app')
-  })
 
 //Launch listening server on port 8080
 app.listen(8080, function () {

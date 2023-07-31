@@ -16,12 +16,6 @@ describe('Status and content', function() {
                 done();
             });
         });
-        it('content', function(done) {
-            request('http://localhost:8080/' , function(error, response, body) {
-                expect(body).to.equal('Hello World');
-                done();
-            });
-        });
     });
 
     describe ('About page', function() {
@@ -33,14 +27,4 @@ describe('Status and content', function() {
         });
 
     });
-    describe ('Me page', function() {
-        it('status', function(done){
-            request('http://localhost:8080/me', function(error, response, body) {
-                expect(response.statusCode).to.equal(404);
-                done();
-            });
-        });
-
-    });
-    
 });

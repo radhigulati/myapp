@@ -29,9 +29,9 @@ jobs:
                     TEST=$(circleci tests glob "test/test-pages.js" | circleci tests split --split-by=timings)
                     npm test
       - run:
-          command: mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=test/test-pages.js.xml
-          environment:
-            MOCHA_FILE: ~/junit/test-results.xml
+          command: mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=~/junit/test-results.xml
+          # environment:
+          #   MOCHA_FILE: ~/junit/test-results.xml
           when: always
       - store_test_results:
           path: ~/junit

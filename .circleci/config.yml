@@ -28,6 +28,10 @@ jobs:
                     sleep 1m
                     TEST=$(circleci tests glob "test/test-pages.js" | circleci tests split --split-by=timings)
                     npm test
+  - node/test:
+      test-results-for: mocha
+  - node/test:
+      test-results-path: junit.xml
       # - run:
       #     command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
       #     environment:
@@ -35,16 +39,3 @@ jobs:
       #     when: always
       # - store_test_results:
       #     path: ~/junit
-  test:
-    - node/test:
-          test-results-for: mocha
-
-            
-
-workflows:
-  sample:
-    jobs:
-      - test
-      - build-and-test
-            requires:
-              - test

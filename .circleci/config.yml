@@ -10,13 +10,14 @@ jobs:
     parallelism: 3
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
+      # - node/install-packages:
+      #     pkg-manager: npm
+      - run: npm install
       - run:
           name: Run build
           command: node app.js
           background: true
-      - run: mkdir ~/junit 
+      - run: mkdir junit 
       # - run:
       #     name: Run tests
       #     command: |
@@ -35,10 +36,10 @@ jobs:
       - run:
           command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
           environment:
-            MOCHA_FILE: ~/junit/test-results.xml
+            MOCHA_FILE: junit/test-results.xml
           when: always
       - store_test_results:
-          path: ~/junit
+          path: junit
 workflows:
   sample:
     jobs:

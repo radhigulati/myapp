@@ -27,4 +27,40 @@ describe('Status and content', function() {
         });
 
     });
+    describe ('Docs page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/docs', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Product page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/product', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Why now page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/now', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Careers page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/careers', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
 });

@@ -15,11 +15,24 @@ jobs:
           name: Run build
           command: node app.js
           background: true
+      # - run:
+      #     name: Run tests
+      #     command: |
+      #       sleep 1m
+      #       npm test
       - run:
-          name: Run tests
-          command: |
-            sleep 1m
-            npm test
+                name: Test application
+                command: |
+                    sleep 1m
+                    TEST=$(circleci tests glob "src/__tests__/*.js" | circleci tests split --split-by=timings)
+                    npm test
+      - run:
+          command: cp junit.xml ~/junit/
+          when: always
+      - store_test_results:
+          path: ~/junit
+      - store_artifacts:
+          path: ~/junit
             
 
 workflows:

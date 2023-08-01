@@ -16,6 +16,7 @@ jobs:
           name: Run build
           command: node app.js
           background: true
+      - run: mkdir ~/junit 
       # - run:
       #     name: Run tests
       #     command: |
@@ -27,12 +28,12 @@ jobs:
                     sleep 1m
                     TEST=$(circleci tests glob "src/__tests__/*.js" | circleci tests split --split-by=timings)
                     npm test
-      - run:
-          command: cp junit.xml ~/junit/
+       - run:
+          command: mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
           when: always
       - store_test_results:
-          path: ~/junit
-      - store_artifacts:
           path: ~/junit
             
 

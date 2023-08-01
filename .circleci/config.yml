@@ -42,3 +42,5 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      - node/test:
+          test-results-for: mocha

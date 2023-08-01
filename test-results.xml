@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.023" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-08-01T02:11:41" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Status and content" timestamp="2023-08-01T02:11:41" tests="0" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Main page" timestamp="2023-08-01T02:11:41" tests="2" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.013" failures="0">
+    <testcase name="Status and content Main page status" time="0.011" classname="status">
+    </testcase>
+    <testcase name="Status and content Main page content" time="0.001" classname="content">
+    </testcase>
+  </testsuite>
+  <testsuite name="About page" timestamp="2023-08-01T02:11:41" tests="1" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.001" failures="0">
+    <testcase name="Status and content About page status" time="0.001" classname="status">
+    </testcase>
+  </testsuite>
+  <testsuite name="Docs page" timestamp="2023-08-01T02:11:41" tests="1" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.001" failures="0">
+    <testcase name="Status and content Docs page status" time="0.001" classname="status">
+    </testcase>
+  </testsuite>
+  <testsuite name="Product page" timestamp="2023-08-01T02:11:41" tests="1" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.001" failures="0">
+    <testcase name="Status and content Product page status" time="0.001" classname="status">
+    </testcase>
+  </testsuite>
+  <testsuite name="Why now page" timestamp="2023-08-01T02:11:41" tests="1" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.001" failures="0">
+    <testcase name="Status and content Why now page status" time="0.001" classname="status">
+    </testcase>
+  </testsuite>
+  <testsuite name="Careers page" timestamp="2023-08-01T02:11:41" tests="1" file="/Users/Radhika/projects/myapp/test/test-pages.js" time="0.001" failures="0">
+    <testcase name="Status and content Careers page status" time="0.001" classname="status">
+    </testcase>
+  </testsuite>
+</testsuites>

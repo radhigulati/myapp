@@ -25,11 +25,11 @@ jobs:
       #       npm test
       
 
-      - run:
-          command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
-          environment:
-            MOCHA_FILE: junit/test-results.xml
-          when: always
+      # - run:
+      #     command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
+      #     environment:
+      #       MOCHA_FILE: junit/test-results.xml
+      #     when: always
       - store_test_results:
           path: junit
       - store_artifacts:

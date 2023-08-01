@@ -26,10 +26,10 @@ jobs:
                 name: Test application
                 command: |
                     sleep 1m
-                    TEST=$(circleci tests glob "src/__tests__/*.js" | circleci tests split --split-by=timings)
+                    TEST=$(circleci tests glob "test/test-pages.js" | circleci tests split --split-by=timings)
                     npm test
       - run:
-          command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
+          command: mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=test/test-pages.js.xml
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always

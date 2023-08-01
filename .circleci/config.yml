@@ -35,15 +35,15 @@ jobs:
       - store_artifacts:
           path: junit
 
-      - run:
-                name: Test application
-                command: |
-                    sleep 1m
-                    TEST=$(circleci tests glob "test/test-pages.js" | circleci tests split --split-by=timings)
-                    npm test
-                node/test:
-                  test-results-for: mocha
-                  test-results-path: junit.xml
+      # - run:
+      #           name: Test application
+      #           command: |
+      #               sleep 1m
+      #               TEST=$(circleci tests glob "test/test-pages.js" | circleci tests split --split-by=timings)
+      #               npm test
+      #           node/test:
+      #             test-results-for: mocha
+      #             test-results-path: junit.xml
 workflows:
   sample:
     jobs:

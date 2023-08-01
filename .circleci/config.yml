@@ -35,14 +35,16 @@ jobs:
       #     when: always
       # - store_test_results:
       #     path: ~/junit
+  test:
+    - node/test:
+          test-results-for: mocha
 
             
 
 workflows:
   sample:
     jobs:
+      - test
       - build-and-test
             requires:
-              - node/test
-      - node/test:
-          test-results-for: mocha
+              - test

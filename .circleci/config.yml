@@ -23,6 +23,18 @@ jobs:
       #     command: |
       #       sleep 1m
       #       npm test
+      
+
+      - run:
+          command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
+          environment:
+            MOCHA_FILE: junit/test-results.xml
+          when: always
+      - store_test_results:
+          path: junit
+      - store_artifacts:
+          path: junit
+
       - run:
                 name: Test application
                 command: |
@@ -32,14 +44,6 @@ jobs:
                 node/test:
                   test-results-for: mocha
                   test-results-path: junit.xml
-
-      - run:
-          command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
-          environment:
-            MOCHA_FILE: junit/test-results.xml
-          when: always
-      - store_test_results:
-          path: junit
 workflows:
   sample:
     jobs:

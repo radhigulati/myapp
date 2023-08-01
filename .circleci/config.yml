@@ -14,9 +14,13 @@ jobs:
       - run:
           name: Run build
           command: node app.js
+          background: true
       - run:
           name: Run tests
-          command: npm test
+          command: |
+            sleep 1m
+            npm test
+            
 
 workflows:
   sample:

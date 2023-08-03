@@ -1,3 +1,6 @@
+//eric.barendt@stitchfix.com
+
+
 version: 2.1
 
 orbs:
@@ -10,15 +13,33 @@ jobs:
     parallelism: 3
     steps:
       - checkout
-      # - node/install-packages:
-      #     pkg-manager: npm
-      - run: npm install --global mocha
-      - run: npm install
+      - node/install-packages
+    - run:
+        name: Copy test results for storibg
+        command: |
+          echo $(circleci tests glob "test/test-pages.js")
+          $(circleci tests glob "test/test-pages.js" | circleci tests split |
+          xargs npm run test-ci
+
+    - run:
+          command: |
+            mkdir test-results
+            cp test-results.xml test-results/
+          when: always
+    - run:
+        name: Copy test results for storibg
+        command: |
+          if [ -e test-results.xml ]; then
+            sed -i "s|`pwd"/||g" test-results.xml
+          fi
+          # pkg-manager: npm
+      # - run: npm install --global mocha
+      # - run: npm install
       - run:
           name: Run build
           command: node app.js
           background: true
-      - run: mkdir junit 
+      # - run: mkdir junit 
       # - run:
       #     name: Run tests
       #     command: |
@@ -31,15 +52,15 @@ jobs:
       #     environment:
       #       MOCHA_FILE: junit/test-results.xml
       #     when: always
-      - run:
-          command: mocha test --reporter mocha-junit-reporter
-          environment:
-            MOCHA_FILE: junit/test-results.xml
-          when: always
+      # - run:
+      #     command: mocha test --reporter mocha-junit-reporter
+      #     environment:
+      #       MOCHA_FILE: junit/test-results.xml
+      #     when: always
       - store_test_results:
-          path: junit
+          path: test-results
       - store_artifacts:
-          path: junit
+          path: test-results
 
       # - run:
       #           name: Test application

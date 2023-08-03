@@ -42,8 +42,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      # - run: npm install --global mocha
-      # - run: npm install
         
         # - run: mkdir junit 
         # - run:

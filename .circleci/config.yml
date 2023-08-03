@@ -11,53 +11,53 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-    - run:
-        name: Run tests
-        command: |
-          echo $(circleci tests glob "test/test-pages.js")
-          circleci tests glob "test/test-pages.js" | circleci tests split |
-          xargs npm run test
+      - run:
+          name: Run tests
+          command: |
+            echo $(circleci tests glob "test/test-pages.js")
+            circleci tests glob "test/test-pages.js" | circleci tests split |
+            xargs npm run test
 
-    - run:
-        name: Copy test results for storing
-        command: |
-          mkdir test-results
-          cp test-results.xml test-results/
-        when: always
-    - run:
-        name: Copy test results for storibg
-        command: |
-          if [ -e test-results.xml ]; then
-            sed -i "s|`pwd"/||g" test-results.xml
-          fi
+      - run:
+          name: Copy test results for storing
+          command: |
+            mkdir test-results
+            cp test-results.xml test-results/
+          when: always
+      - run:
+          name: Copy test results for storibg
+          command: |
+            if [ -e test-results.xml ]; then
+              sed -i "s|`pwd"/||g" test-results.xml
+            fi
       # - run: npm install --global mocha
       # - run: npm install
-      - run:
-        name: Run build
-        command: node app.js
-        background: true
-      # - run: mkdir junit 
-      # - run:
-      #     name: Run tests
-      #     command: |
-      #       sleep 1m
-      #       npm test
-      
+        - run:
+          name: Run build
+          command: node app.js
+          background: true
+        # - run: mkdir junit 
+        # - run:
+        #     name: Run tests
+        #     command: |
+        #       sleep 1m
+        #       npm test
+        
 
-      # - run:
-      #     command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
-      #     environment:
-      #       MOCHA_FILE: junit/test-results.xml
-      #     when: always
-      # - run:
-      #     command: mocha test --reporter mocha-junit-reporter
-      #     environment:
-      #       MOCHA_FILE: junit/test-results.xml
-      #     when: always
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
+        # - run:
+        #     command: mocha test/test-pages.js --reporter mocha-junit-reporter --reporter-options ./test-results.xml
+        #     environment:
+        #       MOCHA_FILE: junit/test-results.xml
+        #     when: always
+        # - run:
+        #     command: mocha test --reporter mocha-junit-reporter
+        #     environment:
+        #       MOCHA_FILE: junit/test-results.xml
+        #     when: always
+        - store_test_results:
+            path: test-results
+        - store_artifacts:
+            path: test-results
 
       # - run:
       #           name: Test application

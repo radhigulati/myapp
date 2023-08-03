@@ -19,10 +19,10 @@ jobs:
           xargs npm run test-ci
 
     - run:
-          command: |
-            mkdir test-results
-            cp test-results.xml test-results/
-          when: always
+        command: |
+          mkdir test-results
+          cp test-results.xml test-results/
+        when: always
     - run:
         name: Copy test results for storibg
         command: |
@@ -33,9 +33,9 @@ jobs:
       # - run: npm install --global mocha
       # - run: npm install
       - run:
-          name: Run build
-          command: node app.js
-          background: true
+        name: Run build
+        command: node app.js
+        background: true
       # - run: mkdir junit 
       # - run:
       #     name: Run tests
@@ -72,3 +72,8 @@ workflows:
   sample:
     jobs:
       - build-and-test
+
+
+# eric.barendt@stitchfix.com
+
+

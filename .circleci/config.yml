@@ -5,8 +5,8 @@ orbs:
 
 jobs:
   build-and-test:
-    docker:
-      - image: cimg/node:16.16.0
+    # docker:
+    #   - image: cimg/node:16.16.0
     parallelism: 3
     steps:
       - checkout
@@ -21,7 +21,6 @@ jobs:
             echo $(circleci tests glob "test/test-pages.js")
             circleci tests glob "test/test-pages.js" | circleci tests split |
             xargs npm test
-
       - run:
           name: Copy test results for storing
           command: |
@@ -34,6 +33,15 @@ jobs:
             if [ -e test-results.xml ]; then
               sed -i "s|`pwd`/||g" test-results.xml
             fi
+      - store_test_results:
+            path: test-results
+        - store_artifacts:
+            path: test-results
+
+workflows:
+  sample:
+    jobs:
+      - build-and-test
       # - run: npm install --global mocha
       # - run: npm install
         
@@ -55,10 +63,7 @@ jobs:
         #     environment:
         #       MOCHA_FILE: junit/test-results.xml
         #     when: always
-        - store_test_results:
-            path: test-results
-        - store_artifacts:
-            path: test-results
+        
 
       # - run:
       #           name: Test application
@@ -69,10 +74,7 @@ jobs:
       #           node/test:
       #             test-results-for: mocha
       #             test-results-path: junit.xml
-workflows:
-  sample:
-    jobs:
-      - build-and-test
+
 
 
 # eric.barendt@stitchfix.com

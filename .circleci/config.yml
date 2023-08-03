@@ -12,11 +12,15 @@ jobs:
       - checkout
       - node/install-packages
       - run:
+          name: Run build
+          command: node app.js
+          background: true
+      - run:
           name: Run tests
           command: |
             echo $(circleci tests glob "test/test-pages.js")
             circleci tests glob "test/test-pages.js" | circleci tests split |
-            xargs npm run test
+            xargs npm test
 
       - run:
           name: Copy test results for storing
@@ -28,14 +32,11 @@ jobs:
           name: Copy test results for storibg
           command: |
             if [ -e test-results.xml ]; then
-              sed -i "s|`pwd"/||g" test-results.xml
+              sed -i "s|`pwd`/||g" test-results.xml
             fi
       # - run: npm install --global mocha
       # - run: npm install
-        - run:
-          name: Run build
-          command: node app.js
-          background: true
+        
         # - run: mkdir junit 
         # - run:
         #     name: Run tests

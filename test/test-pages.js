@@ -36,6 +36,51 @@ describe('Status and content', function() {
         });
 
     });
+    describe ('Competitive page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/competitive', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Cat page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/cat', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Dog page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/dog', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('Random page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/random', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
+    describe ('CCI page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/CCI', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
     describe ('Product page', function() {
         it('status', function(done){
             request('http://localhost:8080/product', function(error, response, body) {

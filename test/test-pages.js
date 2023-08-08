@@ -27,7 +27,7 @@ describe('Status and content', function() {
         });
 
     });
-    describe ('Done page', function() {
+    describe ('Docs page', function() {
         it('status', function(done){
             request('http://localhost:8080/docs', function(error, response, body) {
                 expect(response.statusCode).to.equal(404);

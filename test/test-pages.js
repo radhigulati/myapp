@@ -117,4 +117,13 @@ describe('Status and content', function() {
         });
 
     });
+    describe ('Sofa page', function() {
+        it('status', function(done){
+            request('http://localhost:8080/sofa', function(error, response, body) {
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
+        });
+
+    });
 });

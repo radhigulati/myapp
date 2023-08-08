@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@5.1.0
 
 jobs:
-  build-and-test-workflow-this-is-the-job-name-testing-for-length---------:
+  build-and-test:
     docker:
       - image: cimg/node:16.16.0
     resource_class: small
@@ -42,7 +42,7 @@ jobs:
 workflows:
   sample:
     jobs:
-      - build-and-test-workflow-this-is-the-job-name-testing-for-length---------
+      - build-and-test
         
         # - run: mkdir junit 
         # - run:

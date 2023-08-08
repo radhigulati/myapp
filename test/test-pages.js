@@ -36,7 +36,7 @@ describe('Status and content', function() {
         });
 
     });
-    describe ('Competitive page, function() {
+    describe ('Competitive page', function() {
         it('status', function(done){
             request('http://localhost:8080/competitive', function(error, response, body) {
                 expect(response.statusCode).to.equal(404);
